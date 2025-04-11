@@ -31,10 +31,6 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
 
-
-    - name: Package Spring Boot Application
-      run: mvn clean package
-
     - name: Build Docker Image using Spring Boot Maven Plugin
       run: mvn spring-boot:build-image -Dspring-boot.build-image.imageName=surajsh3/kindle:${{ github.sha }}
 
@@ -47,4 +43,4 @@ jobs:
 
     - name: Push Docker Image to Docker Hub
       run: |
-        docker push surajsh3/spring-boot-app:${{ github.sha }}
+        docker push surajsh3/kindle:${{ github.sha }}
